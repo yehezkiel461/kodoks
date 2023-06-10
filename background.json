@@ -1,0 +1,21 @@
+{ "frames": {
+   "background.png": {
+    "frame": { "x": 0, "y": 0, "w": 6400, "h": 12800 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6400, "h": 12800 },
+    "sourceSize": { "w": 6400, "h": 12800 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.30-x64",
+  "image": "background-sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 6400, "h": 12800 },
+  "scale": "1",
+  "frameTags": [
+  ]
+ }
+}
