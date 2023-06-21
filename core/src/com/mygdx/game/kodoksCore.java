@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.gameObjects.*;
+import com.mygdx.game.gameData.gameSound;
 
 public class kodoksCore extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -22,11 +23,14 @@ public class kodoksCore extends ApplicationAdapter {
 
 	float grid = 50; //size kodok
 
+	gameSound gs = new gameSound();
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		backgroundTexture = new Texture("background.png");
-
+		gs.GameSound();
+		gs.playGameMusic();
 		//sistem Skin
 //		player.createBatch();
 
@@ -59,21 +63,25 @@ public class kodoksCore extends ApplicationAdapter {
 				|| Gdx.input.isKeyPressed(Input.Keys.A) ){
 			player.move(-1, 0);
 			player.update();
+			gs.playJumpSound();
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)
 				|| Gdx.input.isKeyPressed(Input.Keys.D)) {
 			player.move(1, 0);
 			player.update();
+			gs.playJumpSound();
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)
 				|| Gdx.input.isKeyPressed(Input.Keys.S)) {
 			player.move(0, 1);
 			player.update();
+			gs.playJumpSound();
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.UP)
 				|| Gdx.input.isKeyPressed(Input.Keys.W)){
 			player.move(0,1);
 			player.update();
+			gs.playJumpSound();
 		}
 
 	}
@@ -83,6 +91,7 @@ public class kodoksCore extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		backgroundTexture.dispose();
+		gs.disposeSound();
 	}
 
 	@Override
