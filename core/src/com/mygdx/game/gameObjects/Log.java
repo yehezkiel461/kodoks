@@ -9,4 +9,9 @@ public class Log extends Obstacle{
     public void update(float deltaTime) {
 
     }
+
+    @Override
+    public void spawn() {
+
+    }
 }

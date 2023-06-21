@@ -3,7 +3,7 @@ package com.mygdx.game.gameObjects;
 import com.badlogic.gdx.math.Rectangle;
 
 
-public abstract class Obstacle {
+public abstract class Obstacle extends Rectangle {
     protected Rectangle bounds;
     protected float speed;
 
@@ -13,4 +13,6 @@ public abstract class Obstacle {
     }
 
     public abstract void update(float deltaTime);
+
+    public abstract void spawn();
 }

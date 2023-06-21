@@ -1,0 +1,12 @@
+
+devil.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+devil1
+  rotate: false
+  xy: 1, 1
+  size: 150, 50
+  orig: 150, 50
+  offset: 0, 0
+  index: -1

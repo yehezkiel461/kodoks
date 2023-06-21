@@ -9,4 +9,11 @@ public class Car extends Obstacle{
     public void update(float deltaTime) {
 
     }
+
+    @Override
+    public void spawn() {
+
+    }
+
+
 }

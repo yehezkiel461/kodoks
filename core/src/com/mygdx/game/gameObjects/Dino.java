@@ -9,4 +9,9 @@ public class Dino extends Obstacle {
     public void update(float deltaTime) {
 
     }
+
+    @Override
+    public void spawn() {
+
+    }
 }
