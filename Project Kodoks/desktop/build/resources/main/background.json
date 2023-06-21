@@ -4,7 +4,7 @@
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 6400, "h": 12800 },
-    "sourceSize": { "w": 640, "h": 1280 },
+    "sourceSize": { "w": 6400, "h": 12800 },
     "duration": 100
    }
  },
@@ -13,7 +13,7 @@
   "version": "1.2.30-x64",
   "image": "background-sheet.png",
   "format": "RGBA8888",
-  "size": { "w": 640, "h": 1280 },
+  "size": { "w": 6400, "h": 12800 },
   "scale": "1",
   "frameTags": [
   ]
