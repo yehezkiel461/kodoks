@@ -13,7 +13,6 @@ public class kodoksCore extends ApplicationAdapter {
 	Texture img;
 	Texture backgroundTexture;
 	Texture frogTexture;
-
 	private BitmapFont font;
 	private boolean paused;
 
