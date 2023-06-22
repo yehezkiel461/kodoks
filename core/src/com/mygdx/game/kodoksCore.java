@@ -11,6 +11,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.game.gameObjects.*;
 import com.mygdx.game.gameData.gameSound;
 
+import java.util.Iterator;
+
 public class kodoksCore extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
@@ -18,11 +20,12 @@ public class kodoksCore extends ApplicationAdapter {
 
 	private BitmapFont font;
 	private boolean paused;
+	private boolean isOnLog;
 	Kodoks player = new Kodoks();
-
-	float grid = 50; //size kodok
+	Log log = new Log();
 
 	gameSound gs = new gameSound();
+
 
 	@Override
 	public void create () {
@@ -30,11 +33,13 @@ public class kodoksCore extends ApplicationAdapter {
 		backgroundTexture = new Texture("background.png");
 		gs.GameSound();
 		gs.playGameMusic();
-		//sistem Skin
+		//kodk
 		player.createBatch();
 		player.resetPosition();
 		player.update(batch);
 
+		//log
+		log.createLog();
 
 
 
@@ -54,7 +59,23 @@ public class kodoksCore extends ApplicationAdapter {
 
 
 
-
+		//log
+		log.spawn();
+		Iterator<Rectangle> iter = log.logMoves.iterator();
+		while (iter.hasNext()) {
+			Rectangle logmove = iter.next();
+			logmove.x -= 50 * Gdx.graphics.getDeltaTime();
+			if (logmove.x + 127 < 0) {
+				iter.remove();
+			}
+			if (logmove.overlaps(player.getBounds()) && player.getBounds().y < logmove.y + logmove.height) {
+				player.getBounds().x -= 50 * Gdx.graphics.getDeltaTime();
+				isOnLog = true; // Mengatur status isOnLog menjadi true
+			} else {
+				isOnLog = false; // Mengatur status isOnLog menjadi false jika kodok tidak berada di atas log
+			}
+		}
+		log.show(batch);
 		//pause keys
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
 			pause();
@@ -104,7 +125,7 @@ public class kodoksCore extends ApplicationAdapter {
 		backgroundTexture.dispose();
 		gs.disposeSound();
 		player.disposeFrog();
-
+		log.disposeLog();
 	}
 
 	@Override
