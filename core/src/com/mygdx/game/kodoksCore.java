@@ -64,25 +64,21 @@ public class kodoksCore extends ApplicationAdapter {
 		if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)
 				|| Gdx.input.isKeyJustPressed(Input.Keys.A) ){
 			player.move(player.getBounds(),-1, 0);
-//			player.update(batch);
 			gs.playJumpSound();
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)
 				|| Gdx.input.isKeyJustPressed(Input.Keys.D)) {
 			player.move(player.getBounds(),1, 0);
-//			player.update(batch);
 			gs.playJumpSound();
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)
 				|| Gdx.input.isKeyJustPressed(Input.Keys.S)) {
 			player.move(player.getBounds(), 0,-1);
-//			player.update(batch);
 			gs.playJumpSound();
 		}
 		if (Gdx.input.isKeyJustPressed(Input.Keys.UP)
 				|| Gdx.input.isKeyJustPressed(Input.Keys.W)){
 			player.move(player.getBounds(),0,1);
-//			player.update(batch);
 			gs.playJumpSound();
 		}
 		player.update(batch);
