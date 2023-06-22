@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Kodoks extends Rectangle {
     public boolean isIntersect = false;
+
+    
     private Rectangle bounds;
     float grid = 50; // size kodok
     Texture kodokOriginal;
