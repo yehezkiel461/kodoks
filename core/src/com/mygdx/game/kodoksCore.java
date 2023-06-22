@@ -18,8 +18,7 @@ public class kodoksCore extends ApplicationAdapter {
 
 	private BitmapFont font;
 	private boolean paused;
-
-	Kodoks player = new Kodoks(250, 900, 50, 50);
+	Kodoks player = new Kodoks();
 
 	float grid = 50; //size kodok
 
@@ -32,8 +31,9 @@ public class kodoksCore extends ApplicationAdapter {
 		gs.GameSound();
 		gs.playGameMusic();
 		//sistem Skin
-//		player.createBatch();
-
+		player.createBatch();
+		player.resetPosition();
+		player.update(batch);
 
 
 
@@ -50,8 +50,10 @@ public class kodoksCore extends ApplicationAdapter {
 		ScreenUtils.clear(0, 0, 0, 1);
 		batch.begin();
 		batch.draw(backgroundTexture, 0, 0);
-
 		batch.end();
+
+
+
 
 		//pause keys
 		if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
@@ -59,29 +61,42 @@ public class kodoksCore extends ApplicationAdapter {
 		}
 
 		//movement keys
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)
-				|| Gdx.input.isKeyPressed(Input.Keys.A) ){
-			player.move(-1, 0);
-			player.update();
+		if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)
+				|| Gdx.input.isKeyJustPressed(Input.Keys.A) ){
+			player.move(player.getBounds(),-1, 0);
+//			player.update(batch);
 			gs.playJumpSound();
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)
-				|| Gdx.input.isKeyPressed(Input.Keys.D)) {
-			player.move(1, 0);
-			player.update();
+		if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)
+				|| Gdx.input.isKeyJustPressed(Input.Keys.D)) {
+			player.move(player.getBounds(),1, 0);
+//			player.update(batch);
 			gs.playJumpSound();
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)
-				|| Gdx.input.isKeyPressed(Input.Keys.S)) {
-			player.move(0, 1);
-			player.update();
+		if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)
+				|| Gdx.input.isKeyJustPressed(Input.Keys.S)) {
+			player.move(player.getBounds(), 0,-1);
+//			player.update(batch);
 			gs.playJumpSound();
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.UP)
-				|| Gdx.input.isKeyPressed(Input.Keys.W)){
-			player.move(0,1);
-			player.update();
+		if (Gdx.input.isKeyJustPressed(Input.Keys.UP)
+				|| Gdx.input.isKeyJustPressed(Input.Keys.W)){
+			player.move(player.getBounds(),0,1);
+//			player.update(batch);
 			gs.playJumpSound();
+		}
+		player.update(batch);
+		if (player.getBounds().x > 400){
+			player.getBounds().x = 400;
+		}
+		if (player.getBounds().x < 0){
+			player.getBounds().x = 0;
+		}
+		if (player.getBounds().y > 850){
+			player.getBounds().y = 850;
+		}
+		if (player.getBounds().y < 0){
+			player.getBounds().y = 0;
 		}
 
 	}
@@ -92,6 +107,8 @@ public class kodoksCore extends ApplicationAdapter {
 		batch.dispose();
 		backgroundTexture.dispose();
 		gs.disposeSound();
+		player.disposeFrog();
+
 	}
 
 	@Override
@@ -105,7 +122,6 @@ public class kodoksCore extends ApplicationAdapter {
 
 	void drawPauseMenu(){
 		batch.begin();
-//		batch.draw(backgroundTexture, 0, 0);
 		font.draw(batch, "Game Paused", 100, 400);
 		font.draw(batch, "Press esc to resume", 70, 370);
 		batch.end();
