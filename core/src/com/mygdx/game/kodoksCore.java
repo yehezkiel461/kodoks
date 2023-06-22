@@ -19,7 +19,7 @@ public class kodoksCore extends ApplicationAdapter {
 	private BitmapFont font;
 	private boolean paused;
 
-	Kodoks player;
+	Kodoks player = new Kodoks(250, 900, 50, 50);
 
 	float grid = 50; //size kodok
 
