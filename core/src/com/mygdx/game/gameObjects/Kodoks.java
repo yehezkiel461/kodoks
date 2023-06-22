@@ -1,5 +1,6 @@
 package com.mygdx.game.gameObjects;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.graphics.Texture;
 
@@ -19,7 +20,7 @@ public class Kodoks extends Rectangle {
 
     public void createBatch(){
         kodokOriginal = new Texture("");
-        kodokSkin1 = new Texture("");
+        kodokSkin1 = new Texture("blackSolo");
         kodokSkin2 = new Texture("");
     }
 
@@ -41,7 +42,9 @@ public class Kodoks extends Rectangle {
         y -= ydir * grid;
     }
 
-    public void update(){
-
+    public void update(SpriteBatch batch, float x, float y){
+        batch.begin();
+        batch.draw(kodokSkin1, x, y);
+        batch.end();
     }
 }
